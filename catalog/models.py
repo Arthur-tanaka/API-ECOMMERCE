@@ -5,6 +5,9 @@ from django.conf import settings
 class Category(models.Model):
     name = models.CharField(max_length=30)
     
+    class Meta:
+        verbose_name_plural = "Categories"
+    
     def __str__(self):
         return self.name
 
@@ -25,6 +28,7 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT)
     sexo = models.CharField(max_length=2, choices=[('ML', 'Masculino'), ('FM', 'Feminino'), ('UN', 'Unissex')])
     imagem = models.ImageField(upload_to='product_images/')
+    
 
     def __str__(self):
         return self.name
